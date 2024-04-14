@@ -216,15 +216,18 @@
                     if (isset($_COOKIE)) {
                         global $validAttribute;
                         foreach ($_COOKIE as $theme => $value) {
-                            // Hitung jumalah atribute key dari $value yg beririsan dengan valid atribute, jika sama maka tema tsb adalah tema yg tersimpan di cookie
-                            if (count(array_intersect(array_keys($value), $validAttribute)) == count($value)) {
-                                $selected = '';
-                                if (isset($t)) {
-                                    if ($t == $theme) {
-                                        $selected = 'selected';
+                            // Cek klo $value ada attribute bgColor, JUST IN CASE KALO $value BUKAN ARRAY;
+                            if (isset($value['bgColor'])) {
+                                // Hitung jumalah atribute key dari $value yg beririsan dengan valid atribute, jika sama maka tema tsb adalah tema yg tersimpan di cookie
+                                if (count(array_intersect(array_keys($value), $validAttribute)) == count($value)) {
+                                    $selected = '';
+                                    if (isset($t)) {
+                                        if ($t == $theme) {
+                                            $selected = 'selected';
+                                        }
                                     }
+                                    echo "<option value='$theme' $selected>$theme</option>";
                                 }
-                                echo "<option value='$theme' $selected>$theme</option>";
                             }
                         }
                     }
