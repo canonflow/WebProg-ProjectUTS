@@ -1,4 +1,6 @@
 <?php
+    // Attribute2 yg hanya boleh dimiliki oleh tema
+    $validAttribute = ['bgColor', 'headingColor', 'headingAlign', 'paragraphColor', 'fontSize'];
     if (isset($_POST['btnChoose'])) {
         if (isset($_POST['theme'])) {
             $t = $_POST['theme'];
@@ -41,9 +43,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Programming | Project UTS </title>
+    <title>Web Programming | Project UTS</title>
     <link rel="icon" href="./assets/icons/icon-2.svg" type="image/png">
     <style>
         * {
@@ -212,14 +214,18 @@
                     <option value="" selected disabled>---- Choose Theme ----</option>
                     <?php
                     if (isset($_COOKIE)) {
+                        global $validAttribute;
                         foreach ($_COOKIE as $theme => $value) {
-                            $selected = '';
-                            if (isset($t)) {
-                                if ($t == $theme) {
-                                    $selected = 'selected';
+                            // Hitung jumalah atribute key dari $value yg beririsan dengan valid atribute, jika sama maka tema tsb adalah tema yg tersimpan di cookie
+                            if (count(array_intersect(array_keys($value), $validAttribute)) == count($value)) {
+                                $selected = '';
+                                if (isset($t)) {
+                                    if ($t == $theme) {
+                                        $selected = 'selected';
+                                    }
                                 }
+                                echo "<option value='$theme' $selected>$theme</option>";
                             }
-                            echo "<option value='$theme' $selected>$theme</option>";
                         }
                     }
                     ?>

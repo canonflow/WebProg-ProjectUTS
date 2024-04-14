@@ -12,6 +12,7 @@
         setcookie("$theme"."[headingAlign]", $headingAlign);
         setcookie("$theme"."[paragraphColor]", $paragraphColor);
         setcookie("$theme"."[fontSize]", $fontSize);
+        
     }
 
 ?>
