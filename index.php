@@ -217,7 +217,7 @@
                         global $validAttribute;
                         foreach ($_COOKIE as $theme => $value) {
                             // Cek klo $value ada attribute bgColor, JUST IN CASE KALO $value BUKAN ARRAY;
-                            if (isset($value['bgColor'])) {
+                            if (is_array($value)) {
                                 // Hitung jumalah atribute key dari $value yg beririsan dengan valid atribute, jika sama maka tema tsb adalah tema yg tersimpan di cookie
                                 if (count(array_intersect(array_keys($value), $validAttribute)) == count($value)) {
                                     $selected = '';
