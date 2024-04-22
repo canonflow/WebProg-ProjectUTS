@@ -12,7 +12,7 @@
         setcookie("$theme"."[headingAlign]", $headingAlign);
         setcookie("$theme"."[paragraphColor]", $paragraphColor);
         setcookie("$theme"."[fontSize]", $fontSize);
-        header("Location: index.php");
+        header("Location: /");
     }
 
     if (isset($_GET['theme'])) {

@@ -140,7 +140,7 @@
             </div>
         </form>
         <br />
-        <a href="index.php"><< Back to Main Page</a>
+        <a href="/"><< Back to Main Page</a>
     </main>
 </body>
 </html>
